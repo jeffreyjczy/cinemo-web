@@ -7,7 +7,7 @@ import { addFavorite, removeFavorite } from 'src/redux/favorite-slice';
 // ----------------------------------------------------------------------
 
 export default function DetailsView({ movie }) {
-  const favorites = useSelector((state) => state.favorites);
+  const favorites = useSelector((state) => state.favorite.favorites);
   const [isFavorite, setIsFavorite] = useState(
     favorites.some((favMovie) => favMovie.id === movie.id)
   );
@@ -24,7 +24,7 @@ export default function DetailsView({ movie }) {
   };
 
   return (
-    <Box sx={{ minHeight: '100%' }}>
+    <Box sx={{ height: '90%' }}>
       <Grid container spacing={3}>
         <Grid item xs={12} md={4.5}>
           <Container sx={{ display: 'flex', justifyContent: 'center', height: '100%' }}>

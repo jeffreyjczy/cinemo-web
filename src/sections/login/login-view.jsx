@@ -14,6 +14,8 @@ import { alpha, useTheme } from '@mui/material/styles';
 import InputAdornment from '@mui/material/InputAdornment';
 
 import { useRouter } from 'src/routes/hooks';
+import { useDispatch } from 'react-redux';
+import { useForm } from 'react-hook-form';
 
 import { bgGradient } from 'src/theme/css';
 
@@ -23,22 +25,24 @@ import Iconify from 'src/components/iconify';
 
 export default function LoginView() {
   const theme = useTheme();
-
   const router = useRouter();
+  const dispatch = useDispatch();
 
   const [showPassword, setShowPassword] = useState(false);
+  const { register, handleSubmit } = useForm();
 
-  const handleClick = () => {
+  const handleLogin = (dataForm) => {
+    localStorage.setItem('user', dataForm.email);
     router.push('/');
   };
 
   const renderForm = (
-    <>
+    <form onSubmit={handleSubmit((dataForm) => {handleLogin(dataForm)})}>
       <Stack spacing={3}>
-        <TextField name="email" label="Email address" />
+        <TextField {...register('email', { required: true })} placeholder="Email" />
         <TextField
-          name="password"
-          label="Password"
+          {...register('password', { required: true })}
+          placeholder="password"
           type={showPassword ? 'text' : 'password'}
           InputProps={{
             endAdornment: (
@@ -58,17 +62,10 @@ export default function LoginView() {
         </Link> */}
       </Stack>
 
-      <LoadingButton
-        fullWidth
-        size="large"
-        type="submit"
-        variant="contained"
-        color="inherit"
-        onClick={handleClick}
-      >
+      <LoadingButton fullWidth size="large" type="submit" variant="contained" color="inherit">
         Login
       </LoadingButton>
-    </>
+    </form>
   );
 
   return (

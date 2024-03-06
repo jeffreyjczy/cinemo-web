@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useRouter } from 'src/routes/hooks';
 
 import Box from '@mui/material/Box';
 import Avatar from '@mui/material/Avatar';
@@ -9,10 +10,14 @@ import MenuItem from '@mui/material/MenuItem';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 
+import { useSelector, useDispatch } from 'react-redux';
+
 import { account } from 'src/_mock/account';
 
 export default function AccountPopover() {
   const [open, setOpen] = useState(null);
+  const router = useRouter();
+  const email = localStorage.getItem('user');
 
   const handleOpen = (event) => {
     setOpen(event.currentTarget);
@@ -23,8 +28,9 @@ export default function AccountPopover() {
   };
 
   const handleLogout = () => {
-    
-  }
+    localStorage.removeItem('user');
+    router.push('/login');
+  };
 
   return (
     <>
@@ -73,7 +79,7 @@ export default function AccountPopover() {
             {account.displayName}
           </Typography>
           <Typography variant="body2" sx={{ color: 'text.secondary' }} noWrap>
-            {account.email}
+            {email}
           </Typography>
         </Box>
 

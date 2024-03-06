@@ -8,7 +8,7 @@ import { NAV, HEADER } from './config-layout';
 
 // ----------------------------------------------------------------------
 
-const SPACING = 8;
+const SPACING = 4;
 
 export default function Main({ children, sx, ...other }) {
   const lgUp = useResponsive('up', 'lg');
@@ -24,7 +24,7 @@ export default function Main({ children, sx, ...other }) {
         py: `${HEADER.H_MOBILE + SPACING}px`,
         ...(lgUp && {
           px: 2,
-          py: `${HEADER.H_DESKTOP + SPACING}px`,
+          py: `${HEADER.H_DESKTOP }px`,
           width: `calc(100% - ${NAV.WIDTH}px)`,
         }),
         ...sx,

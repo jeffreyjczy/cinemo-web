@@ -32,7 +32,7 @@ const StyledGreyout = styled('div')(({ theme, showdetails }) => ({
 }));
 
 export default function MovieCard({ movie }) {
-  const favorites = useSelector((state) => state.favorites);
+  const favorites = useSelector((state) => state.favorite.favorites);
   const [isFavorite, setIsFavorite] = useState(
     favorites.some((favMovie) => favMovie.id === movie.id)
   );
