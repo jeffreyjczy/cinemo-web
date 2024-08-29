@@ -62,6 +62,7 @@ export default function MovieCard({
         >
           {showDetails && (
             <Button
+              className="details-button"
               variant="info"
               style={{
                 width: '100%',
@@ -78,6 +79,7 @@ export default function MovieCard({
         </StyledGreyout>
 
         <IconButton
+          className="favorite-button"
           sx={{
             position: 'absolute',
             zIndex: 3,
@@ -85,6 +87,7 @@ export default function MovieCard({
           onClick={handleFavoriteClick}
         >
           <StyledIcon
+            className="favorite-icon"
             icon="ic:round-favorite"
             width={60}
             height={60}
