@@ -69,8 +69,8 @@ export default function MovieCard({
                 height: '100%',
                 display: 'block',
                 zIndex: 2,
-                color: 'white',
-                fontSize: 20,
+                color: 'green',
+                fontSize: 100,
               }}
             >
               Details
